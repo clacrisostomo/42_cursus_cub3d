@@ -6,7 +6,7 @@
 /*   By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 01:45:00 by csantos-          #+#    #+#             */
-/*   Updated: 2021/04/26 03:51:58 by csantos-         ###   ########.fr       */
+/*   Updated: 2021/04/26 03:57:00 by csantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ typedef struct s_game
  * FUNCTIONS
  ****/
 
-int	update(t_game *game);
+int		update(t_game *game);
+void	minimap(t_game *game);
 
 #endif

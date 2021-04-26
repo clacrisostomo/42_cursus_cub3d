@@ -63,27 +63,33 @@ int	press_key(int key, t_game *game)
 	if (key == ESC)
 		close_window(game);
 	if (key == W)
-		game->player.walk_direction = -1;
+		game->player.walk_direction = - 1;
 	if (key == S)
-		game->player.walk_direction = +1;
+		game->player.walk_direction = + 1;
 	if (key == A)
-		game->player.left_right = -1;
+		game->player.left_right = - 1;
 	if (key == D)
-		game->player.left_right = +1;
+		game->player.left_right = + 1;
 	if (key == RIGHT)
-		game->player.turn_direction = +1;
+		game->player.turn_direction = + 1;
 	if (key == LEFT)
-		game->player.turn_direction = -1;
+		game->player.turn_direction = - 1;
 	return (true);
 }
 
 int	release_key(int key, t_game *game)
 {
-	if (key == W || key == S)
+	if (key == W)
 		game->player.walk_direction = 0;
-	if (key == A || key == D)
+	if (key == S)
+		game->player.walk_direction = 0;
+	if (key == A)
 		game->player.left_right = 0;
-	if (key == RIGHT || key == LEFT)
+	if (key == D)
+		game->player.left_right = 0;
+	if (key == RIGHT)
+		game->player.turn_direction = 0;
+	if (key == LEFT)
 		game->player.turn_direction = 0;
 	return (true);
 }
@@ -402,9 +408,9 @@ void	draw_player(t_game *game)
 	int	i;
 	int	j;
 
-	game->colour.red = 0;
-	game->colour.green = 0;
-	game->colour.blue = 0;
+	game->colour.red = 46;
+	game->colour.green = 184;
+	game->colour.blue = 184;
 	i = game->player.x - 3;
 	while (i < (game->player.x + game->player.width))
 	{
@@ -440,15 +446,15 @@ void	minimap(t_game *game)
 			game->map.height = (row * game->block) * MAP_SCALE;
 			if (map[row][col] != 0)
 			{
-				game->colour.red = 102;
+				game->colour.red = 153;
 				game->colour.green = 0;
-				game->colour.blue = 204;
+				game->colour.blue = 115;
 			}
 			else
 			{
-				game->colour.red = 70;
-				game->colour.green = 70;
-				game->colour.blue = 70;
+				game->colour.red = 0;
+				game->colour.green = 0;
+				game->colour.blue = 0;
 			}
 			draw_rect(game);
 			col++;
@@ -490,7 +496,7 @@ int	main(void)
 	game.data.mlx = mlx_init();
 	if (game.init == 0)
 		game.data.win = mlx_new_window(game.data.mlx, SCREEN_WIDTH,
-				SCREEN_HEIGHT);
+				SCREEN_HEIGHT, "Cub3d");
 	if (game.init == 0)
 		game.data.img = mlx_new_image(game.data.mlx, SCREEN_WIDTH,
 				SCREEN_HEIGHT);

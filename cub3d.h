@@ -32,8 +32,8 @@
 # define KEYPRESS_MASK 1L<<0
 # define KEYRELEASE_MASK 1L<<1
 # define ESC 0x00ff1b
-# define WIN_BUTTON_X 33 //NOTIFY MASK
-# define WIN_BUTTON_X_MASK 1L<<17 //CLIENT_MESSAGE
+# define WIN_BUTTON_X 33//NOTIFY_MASK
+# define WIN_BUTTON_X_MASK 1L<<17//CLIENT_MESAGE
 # define MOUSE_1 1
 # define W 0x0077
 # define S 0x0073
@@ -43,7 +43,6 @@
 # define DOWN 0x00ff54
 # define RIGHT 0x00ff53
 # define LEFT 0x00ff51
-# define CLIENT_MESSAGE 33
 
 /****
  * SCREEN DEFINITIONS

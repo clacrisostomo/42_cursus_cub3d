@@ -11,12 +11,13 @@
 # **************************************************************************** #
 
 NAME = cub3d
+
 MLX = libmlx.a
 LIBFT = $(LIBFT_PATH)libft.a
 CC = clang
 FLAGS = -Wall -Wextra -Werror
 MLX_FLAGS = -lm -lbsd -lmlx -lXext -lX11
-LIBFT_FLAGS = -L $(LIBFT_PATH) - lft
+LIBFT_FLAGS = -L $(LIBFT_PATH) -lft
 MLX_PATH = minilibx-linux
 LIBFT_PATH = libft
 SRC = cub3d.c
@@ -37,9 +38,10 @@ $(OBJECTS): $(SRC)
 	@$(CC) $(FLAGS) -g -c $(SRC)
 
 git:
-	git add .
-	git commit -m "updating"
-	git push
+	@git add .
+	@git commit -m "updating"
+	@git push
+	echo "Done!"
 
 clean:
 	@make -C $(MLX_PATH) clean

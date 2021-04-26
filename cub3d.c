@@ -408,9 +408,9 @@ void	draw_player(t_game *game)
 	int	i;
 	int	j;
 
-	game->colour.red = 46;
-	game->colour.green = 184;
-	game->colour.blue = 184;
+	game->colour.red = 0;
+	game->colour.green = 230;
+	game->colour.blue = 172;
 	i = game->player.x - 3;
 	while (i < (game->player.x + game->player.width))
 	{
@@ -446,9 +446,9 @@ void	minimap(t_game *game)
 			game->map.height = (row * game->block) * MAP_SCALE;
 			if (map[row][col] != 0)
 			{
-				game->colour.red = 153;
-				game->colour.green = 0;
-				game->colour.blue = 115;
+				game->colour.red = 102;
+				game->colour.green = 102;
+				game->colour.blue = 255;
 			}
 			else
 			{
@@ -476,7 +476,8 @@ int	update(t_game *game)
 		draw_player(game);
 		if (game->player.walk_direction || game->player.left_right
 			|| game->player.turn_direction)
-			castrays(game);
+			move_player(game);
+		castrays(game);
 		mlx_put_image_to_window(game->data.mlx, game->data.win,
 			game->data.img, 0, 0);
 	}
@@ -498,7 +499,7 @@ int	main(void)
 		game.data.win = mlx_new_window(game.data.mlx, SCREEN_WIDTH,
 				SCREEN_HEIGHT, "Cub3d");
 	if (game.init == 0)
-		game.data.img = mlx_new_image(game.data.mlx, SCREEN_WIDTH,
+	game.data.img = mlx_new_image(game.data.mlx, SCREEN_WIDTH,
 				SCREEN_HEIGHT);
 	game.data.addr = mlx_get_data_addr(game.data.img, &game.data.bpp,
 			&game.data.line_len, &game.data.endian);

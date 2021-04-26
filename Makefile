@@ -41,7 +41,7 @@ git:
 	@git add .
 	@git commit -m "updating"
 	@git push
-	echo "Done!"
+	@echo "Done!"
 
 clean:
 	@make -C $(MLX_PATH) clean

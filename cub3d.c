@@ -6,7 +6,7 @@
 /*   By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 01:41:08 by csantos-          #+#    #+#             */
-/*   Updated: 2021/04/26 03:48:22 by csantos-         ###   ########.fr       */
+/*   Updated: 2021/04/26 04:01:57 by csantos-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -402,8 +402,8 @@ void	draw_player(t_game *game)
 	int	i;
 	int	j;
 
-	game->colour.red = 255;
-	game->colour.green = 255;
+	game->colour.red = 0;
+	game->colour.green = 0;
 	game->colour.blue = 0;
 	i = game->player.x - 3;
 	while (i < (game->player.x + game->player.width))
@@ -440,9 +440,9 @@ void	minimap(t_game *game)
 			game->map.height = (row * game->block) * MAP_SCALE;
 			if (map[row][col] != 0)
 			{
-				game->colour.red = 255;
+				game->colour.red = 102;
 				game->colour.green = 0;
-				game->colour.blue = 255;
+				game->colour.blue = 204;
 			}
 			else
 			{

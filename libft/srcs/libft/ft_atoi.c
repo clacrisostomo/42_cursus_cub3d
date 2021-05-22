@@ -1,54 +1,27 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/21 00:08:24 by csantos-          #+#    #+#             */
-/*   Updated: 2021/02/25 12:54:15 by csantos-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** Converts a char into an integer
-*/
-
 #include "libft.h"
 
-static int	ft_isspace(int c)
+int	ft_atoi(const char *str)
 {
-	if (c == ' ' || c == '\f' || c == '\n' || c == '\r' || c == '\t'
-		|| c == '\v')
-		return (1);
-	else
-		return (0);
-}
+	int	c;
+	int	s;
+	int	res;
 
-int	ft_atoi(const char *c)
-{
-	int	sign;
-	int	i;
-	int	nbr;
-	int	conv;
-
-	sign = 1;
-	i = 0;
-	nbr = 0;
-	conv = 0;
-	while (ft_isspace(c[i]) == 1)
-		i++;
-	if (c[i] == '+' || c[i] == '-')
+	c = 0;
+	s = 1;
+	res = 0;
+	while (str[c] == ' ' || str[c] == '\n' || str[c] == '\t'
+		|| str[c] == '\v' || str[c] == '\f' || str[c] == '\r')
+		c++;
+	if (str[c] == '-' || str[c] == '+')
 	{
-		if (c[i] == '-')
-			sign = -1;
-		i++;
+		if (str[c] == '-')
+			s = -1;
+		c++;
 	}
-	while (ft_isdigit(c[i]) == 1)
+	while (str[c] >= '0' && str[c] <= '9')
 	{
-		nbr = (c[i] - '0');
-		conv = (conv * 10) + nbr;
-		i++;
+		res = (res * 10) + (str[c] - '0');
+		c++;
 	}
-	return (conv * sign);
+	return (res * s);
 }

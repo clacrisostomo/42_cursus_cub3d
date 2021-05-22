@@ -1,25 +1,40 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/02/10 19:49:52 by csantos-          #+#    #+#              #
-#    Updated: 2021/02/25 12:42:22 by csantos-         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME	= libft.a
 
 DIR_SRCS	= srcs
 DIR_OBJS	= objs
-SUBDIRS		= libft gnl ft_printf
+SUBDIRS		= libft
 
 SRCS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_SRCS)/, $(dir)))
 OBJS_DIRS	= $(foreach dir, $(SUBDIRS), $(addprefix $(DIR_OBJS)/, $(dir)))
-SRCS		= $(foreach dir, $(SRCS_DIRS), $(wildcard $(dir)/*.c))
+SRCS		= $(foreach dir, $(SRCS_DIRS), $(FILES))
 OBJS		= $(subst $(DIR_SRCS), $(DIR_OBJS), $(SRCS:.c=.o))
+
+FILES = $(dir)/ft_atoi.c\
+		$(dir)/ft_bzero.c\
+		$(dir)/ft_memcpy.c\
+		$(dir)/ft_memset.c\
+		$(dir)/ft_split.c\
+		$(dir)/ft_strchr.c\
+		$(dir)/ft_strclen.c\
+		$(dir)/ft_strcmp.c\
+		$(dir)/ft_strdel.c\
+		$(dir)/ft_strdup.c\
+		$(dir)/ft_strjoin_free.c\
+		$(dir)/ft_strjoin.c\
+		$(dir)/ft_strlcpy.c\
+		$(dir)/ft_strlen_pointer.c\
+		$(dir)/ft_strlen.c\
+		$(dir)/ft_strndup.c\
+		$(dir)/ft_strstr.c\
+		$(dir)/ft_strtrim.c\
+		$(dir)/ft_substr.c\
+		$(dir)/get_next_line.c\
+		$(dir)/ft_putendl.c\
+		$(dir)/ft_putchar.c\
+		$(dir)/ft_putstr.c\
+		$(dir)/ft_calloc.c\
+		$(dir)/ft_strsub.c
+
 
 INCLUDES	= -I includes
 

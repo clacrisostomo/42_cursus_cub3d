@@ -1,75 +1,93 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/23 19:35:39 by csantos-          #+#    #+#             */
-/*   Updated: 2021/02/24 16:01:26 by csantos-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static size_t	lettercount(const char *s, char c)
+static void	bad_spot(char **tab, int i)
 {
-	int			lcount;
-
-	lcount = 0;
-	while (s[lcount] != c && s[lcount] != '\0')
-		++lcount;
-	return (lcount);
+	while (i)
+	{
+		free(tab[i]);
+		i--;
+	}
+	free(tab);
 }
 
-static size_t	wordcount(char const *s, char c)
+int	c_split(char const *str, char c)
 {
-	size_t		lcount;
-	size_t		words;
-	size_t		flag;
-	size_t		start;
+	int	i;
+	int	cp_word;
+	int	is_num;
 
-	lcount = 0;
-	words = 0;
-	flag = 0;
-	while (s[lcount])
+	is_num = 0;
+	cp_word = 0;
+	i = 0;
+	while (str[i])
 	{
-		start = flag;
-		if (s[lcount] == c)
-			flag = 0;
+		if (str[i] == c)
+			is_num = 0;
 		else
-			flag = 1;
-		if (start != flag && start == 1)
-			++words;
-		++lcount;
+		{
+			if (is_num == 0)
+			{
+				cp_word++;
+				is_num = 1;
+			}
+		}
+		i++;
 	}
-	if (flag == 1)
-		++words;
-	return (words);
+	return (cp_word);
+}
+
+static char	*p_split(char const *str, int *n, char c)
+{
+	int		i;
+	int		start;
+	int		end;
+	char	*split;
+
+	i = *n;
+	while (str[i] == c)
+		i++;
+	start = i;
+	while (str[i] != c && str[i])
+		i++;
+	end = i;
+	*n = end;
+	split = (char *)ft_calloc(1, end - start + 1);
+	if (!(split))
+		return (NULL);
+	i = 0;
+	while (start < end)
+	{
+		split[i] = str[start];
+		i++;
+		start++;
+	}
+	split[i] = '\0';
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	size_t		words;
-	char		**receiver;
-	int			lcount;
+	int		i;
+	int		pos;
+	char	**split_t;
 
-	if (!s)
-		return (0);
-	words = wordcount(s, c);
-	receiver = ft_calloc(words + 1, sizeof(char *));
-	if (!receiver)
-		return (0);
-	lcount = -1;
-	words = 0;
-	while (s[++lcount])
+	if (s == NULL)
+		return (NULL);
+	split_t = (char **)ft_calloc(1, (1 + c_split(s, c)) * sizeof(char *));
+	if (split_t == NULL)
+		return (NULL);
+	i = 0;
+	pos = 0;
+	while (i < c_split(s, c))
 	{
-		if (s[lcount] != c && s[lcount] != '\0')
+		split_t[i] = p_split(s, &pos, c);
+		if (!(split_t[i]))
 		{
-			receiver[words] = ft_substr(s, lcount, lettercount(&s[lcount], c));
-			++words;
-			lcount = lcount + lettercount(&s[lcount], c) - 1;
+			bad_spot(split_t, i);
+			return (NULL);
 		}
+		i++;
 	}
-	return (receiver);
+	split_t[i] = NULL;
+	return (split_t);
 }

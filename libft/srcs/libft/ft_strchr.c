@@ -1,33 +1,29 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: csantos- <csantos-@student.42sp.org.br>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/18 01:13:00 by csantos-          #+#    #+#             */
-/*   Updated: 2021/02/22 02:31:10 by csantos-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/*
-** Locates character in string.
-** Returns a pointer to the first occurrence of c in s.
-** Returns NULL if the character is not found.
-** If c is specified as '\0', it returns a pointer to the terminator.
-*/
-
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
+	int					i;
+	char				*tmp;
 
 	i = 0;
-	while ((s[i] != '\0') && ((char)c != s[i]))
+	tmp = (char *)s;
+	if (!s)
+		return (NULL);
+	if (c == '\0')
+	{
+		while (*tmp)
+			tmp++;
+		return ((char *) tmp);
+	}
+	while (tmp[i] != '\0')
+	{
+		if (tmp[i] == (char)c)
+			return ((char *)&tmp[i]);
 		i++;
-	if ((char)c == s[i])
-		return ((char *)s + i);
-	else
-		return (0);
+	}
+	if (*tmp == '\0' && c == '\0')
+	{
+		return (tmp);
+	}
+	return (NULL);
 }

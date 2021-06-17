@@ -65,9 +65,9 @@ C 225,30,0 - ceiling colour (RGB values)
 
 ```./cub3D maps/mandatory/2_map.cub```
 
-![1_map]<img src="https://github.com/clacrisostomo/pics/blob/master/1_map.png">
+![1_map](https://github.com/clacrisostomo/pics/blob/master/1_map.png)
 
-![2_map]<img src="https://github.com/clacrisostomo/pics/blob/master/2_map.png">
+![2_map](https://github.com/clacrisostomo/pics/blob/master/2_map.png)
 
 ---
 
@@ -92,10 +92,10 @@ Try not to lose lives or go to the limbo, find the star to win.
 
 ```./cub3D maps/bonus/bonus.cub```
 
-![Door]<img src="https://github.com/clacrisostomo/pics/blob/master/door.png">
+![Door](https://github.com/clacrisostomo/pics/blob/master/door.png)
 
-![Life]<img src="https://github.com/clacrisostomo/pics/blob/master/life.png">
+![Life](https://github.com/clacrisostomo/pics/blob/master/life.png)
 
-![Limbo]<img src="https://github.com/clacrisostomo/pics/blob/master/limbo.png">
+![Limbo](https://github.com/clacrisostomo/pics/blob/master/limbo.png)
 
-![Win]<img src="https://github.com/clacrisostomo/pics/blob/master/win.png">
+![Win](https://github.com/clacrisostomo/pics/blob/master/win.png)

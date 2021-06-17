@@ -1,10 +1,10 @@
 ## 42_cursus_cub3d
 
-**Description**
+**Description**</br>
 This is my first raycasting project, part of my journey as a Cadet at 42 São Paulo.
 Inspired by Wolfenstein3D, which was the first FPS game ever, the goal was to make a dynamic view inside a maze, using C language and minilibx. This projects runs on Linux.
 
-**Method**
+**Method**</br>
 I have chosen to use *Digital Differential Analysis* (DDA) algorithm for all the calculation needed to be able to draw the projeted walls.
 
 ## How to access
